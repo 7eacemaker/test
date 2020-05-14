@@ -1,0 +1,8 @@
+.uploadContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dataTable{
+    margin-top: 50px;
+}
