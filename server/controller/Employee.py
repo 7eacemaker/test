@@ -1,12 +1,9 @@
 from flask_restful import Resource,Api, reqparse
-from server.helper.predictionHelper import PredictorHelper
-
 from webargs.flaskparser import use_args
-
 from tablib import Dataset
 from webargs import fields
 import werkzeug
-from server.helper.fileHelper import FileHelper
+from helper.fileHelper import FileHelper
 
 class Employee(Resource):
     def post(self):

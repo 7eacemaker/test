@@ -1,10 +1,8 @@
 import os
 import pickle
-import sys
 from flask import jsonify
 from tablib import Dataset
-
-from server.helper.predictionHelper import PredictorHelper
+from helper.predictionHelper import PredictorHelper
 import json
 
 class FileHelper:
@@ -29,15 +27,20 @@ class FileHelper:
 
             if to_predict_list[0] != None:
                 to_predict_list = list(map(float, to_predict_list))
-                result = PredictorHelper.predictionValue(to_predict_list)
+                result = PredictorHelper.predictionValue(to_predict_list)[0]
                 if int(result) == 1:
                     employee['predictionText']='El empleado va a dejar la empresa'
+                    employee['probabilidad'] = str(PredictorHelper.predictionValue(to_predict_list)[1][1])
                 else:
                     employee['predictionText']='El empleado no va a dejar la empresa'
+                    employee['probabilidad'] = str(PredictorHelper.predictionValue(to_predict_list)[1][0])
+
                 new_employees.append(employee)
+                
+
+
             to_predict_list=[]
 
         return new_employees
-
 
 

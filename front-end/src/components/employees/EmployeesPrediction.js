@@ -22,6 +22,10 @@ function EmployeesPrediction() {
     {
       title: "Prediction",
       dataIndex: "predictionText"
+    },
+     {
+      title: "Probabilidad",
+      dataIndex: "probabilidad"
     }
   ];
 

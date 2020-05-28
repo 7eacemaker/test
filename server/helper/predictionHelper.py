@@ -6,7 +6,7 @@ class PredictorHelper:
     @staticmethod
     def loadModelFile():
         os.chdir(os.path.dirname(__file__))
-        file_path = str(os.getcwd()) + '\dataModel\windows\pickle_model.pkl'
+        file_path = str(os.getcwd()) + '/dataModel/linux/pickle_model.pkl'
         print(file_path)
         with open(file_path, 'rb') as file:
             loaded_model = pickle.load(file)
@@ -14,9 +14,13 @@ class PredictorHelper:
 
     @staticmethod
     def predictionValue(to_predict_list):
-        to_predict = np.array(to_predict_list).reshape(1, 8)
+        to_predict = np.array(to_predict_list).reshape(1, 8)    
         model_loaded = PredictorHelper.loadModelFile()
         result = model_loaded.predict(to_predict)
-        return result[0]
+        prob = model_loaded.predict_proba(to_predict)
+        return result[0], prob[0]
+
+
+
 
 
