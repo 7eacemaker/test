@@ -6,7 +6,7 @@ class PredictorHelper:
     @staticmethod
     def loadModelFile():
         os.chdir(os.path.dirname(__file__))
-        file_path = str(os.getcwd()) + '/dataModel/linux/pickle_model.pkl'
+        file_path = str(os.getcwd()) + '/dataModel/linux/1pickle_model.pkl'
         print(file_path)
         with open(file_path, 'rb') as file:
             loaded_model = pickle.load(file)
